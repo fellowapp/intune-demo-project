@@ -1,8 +1,22 @@
 import UIKit
 import Capacitor
+import RecognizebvCapacitorPluginMsauth
+import MSAL
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    override init() {
+        print("SET LOG CALLBACK")
+// MSALGlobalConfig.loggerConfig.logLevel = .verbose
+//         MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
+//             if let message = message {
+//                 // IMPORTANT: MSAL logs may contain sensitive information. Never output MSAL logs with NSLog, or print, directly unless you're running your application in debug mode. If you're writing MSAL logs to file, you must store the file securely.
+//                 print("MSAL log: \(message)")
+//             }
+//         }
+        super.init()
+    }
 
     var window: UIWindow?
 
@@ -36,7 +50,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         // Called when the app was launched with a url. Feel free to add additional processing here,
         // but if you want the App API to support tracking app url opens, make sure to keep this call
-        return MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String)
+        if MsAuthPlugin.checkAppOpen(url: url, options: options) == true {
+          return true
+        }
+
         return ApplicationDelegateProxy.shared.application(app, open: url, options: options)
     }
 

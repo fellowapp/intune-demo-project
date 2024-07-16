@@ -1,4 +1,4 @@
-import MsAuthPlugin from '@recognizebv/capacitor-plugin-msauth';
+import { MsAuthPlugin } from '@recognizebv/capacitor-plugin-msauth';
 
 export const BASE_CONFIG = {
     clientId: "10282e0b-ca1c-404a-8efc-f5ec13aa2fcd",
@@ -95,7 +95,7 @@ window.customElements.define(
             const self = this;
 
 
-            document.getElementById("take-photo").addEventListener("click", async () => {
+            self.shadowRoot.querySelector('#take-photo').addEventListener("click", async () => {
                 await MsAuthPlugin.login({
                     ...BASE_CONFIG,
                     scopes: ["Calendars.Read", "User.Read"],
