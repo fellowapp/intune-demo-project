@@ -3,23 +3,41 @@
 This app was created using [`@capacitor/create-app`](https://github.com/ionic-team/create-capacitor-app),
 and comes with a very minimal shell for building an app.
 
-### Running this example
-
-To run the provided example, you can use `npm start` command.
-
-```bash
-npm start
-```
-
-A lot of configuration is required to run this in any meaningful sense. 
+### Configuring this example
 
 First create an app from the App Registrations page in the Azure portal.
 https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade
 In this example we used com.example.intunedemo as our bundle id. You'll need to replace this with your own bundle id.
 
+You'll also need to set the app ID to your app id in:
+the capacitor.config.json file in the appId field.
+`ios/App/App/App.entitlements` first keychain access group needs to be changed
+`ios/App/App.xcodeproj` two occurrences of setting `PRODUCT_BUNDLE_IDENTIFIER` to your bundle id
 
-For MSAL you'll need to adjust the demo to use your own client id, bundle id, redirect URL, and more. Follow these pages to get started:
+Then you'll need to set the client ID in the BASE_CONFIG variable in `src/js/capacitor-welcome.js` to your client id.
+
+Also in the Authentication section of the Microsoft Admin centre, you'll need to create a redirect URI
+with your new bundle ID as well as `msauth.<your-bundle-id>://auth` redirect URI.
+
+### Running this example
+
+To run this iOS example execute the following
+
+```bash
+npm install
+npm build
+npx cap sync ios
+npx cap open ios
+```
+
+And then run in xcode.
+
+
+### Additional Documentation
+
+For a more complete list of relevant documentation check out:
 https://learn.microsoft.com/en-us/entra/msal/objc/install-and-configure-msal#configuring-your-project-to-use-msal
+https://learn.microsoft.com/en-us/entra/msal/objc/single-sign-on-macos-ios#sso-through-authentication-broker-on-ios
 https://learn.microsoft.com/en-us/entra/msal/objc/configure-authority
 https://learn.microsoft.com/en-us/entra/msal/objc/redirect-uris-ios
 https://learn.microsoft.com/en-us/entra/msal/objc/acquire-tokens
