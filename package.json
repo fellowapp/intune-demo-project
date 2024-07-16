@@ -1,0 +1,27 @@
+{
+  "name": "intune-demo-app",
+  "version": "1.0.0",
+  "description": "A demo of Intune within a Capacitor iOS app.",
+  "main": "index.js",
+  "keywords": [
+    "capacitor",
+    "mobile"
+  ],
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@capacitor/core": "5.1.1",
+    "@capacitor/ios": "https://registry.npmjs.org/@fellow/capacitor-ios/-/capacitor-ios-5.1.1-beta.1.tgz",
+    "@fellow/intune": "github:fellowapp/intune",
+    "@recognizebv/capacitor-plugin-msauth": "github:fellowapp/capacitor-plugin-msauth"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "latest",
+    "vite": "^2.9.13"
+  },
+  "author": "",
+  "license": "ISC"
+}
