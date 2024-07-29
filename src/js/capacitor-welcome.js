@@ -1,4 +1,5 @@
 import { MsAuthPlugin } from '@recognizebv/capacitor-plugin-msauth';
+import { Intune } from "@fellow/intune";
 
 export const BASE_CONFIG = {
     clientId: "10282e0b-ca1c-404a-8efc-f5ec13aa2fcd",
@@ -67,7 +68,13 @@ window.customElements.define(
           This demo shows how to sign in with MSAL
         </p>
         <p>
-          <button class="button" id="take-photo">Login with Microsoft</button>
+          <button class="button" id="login">Login with MSAL</button>
+        </p>
+        <p>
+          <button class="button" id="intune">Activate Intune</button>
+        </p>
+        <p>
+          <button class="button" id="debug">Open Intune Console</button>
         </p>
         <p>
           <img id="image" style="max-width: 100%">
@@ -80,16 +87,19 @@ window.customElements.define(
         connectedCallback() {
             const self = this;
 
-            self.shadowRoot.querySelector('#take-photo').addEventListener("click", async () => {
+            self.shadowRoot.querySelector('#login').addEventListener("click", async () => {
                 await MsAuthPlugin.login({
                     ...BASE_CONFIG,
                     scopes: ["Calendars.Read", "User.Read"],
                 });
-                // There's a bunch of documentation about this flow on https://dev.fellow.wiki
-                const result = await MsAuthPlugin.login({
-                    ...BASE_CONFIG,
-                    scopes: [`api://${window.ROOT_DOMAIN?.replace(/^\./, "")}/${window.MICROSOFT_CLIENT_ID}/.default`],
-                });
+            });
+
+            self.shadowRoot.querySelector('#intune').addEventListener("click", async () => {
+                await Intune.loginAndEnrollAccount({ email: "jake@365.fellow.co" });
+            });
+
+            self.shadowRoot.querySelector('#debug').addEventListener("click", async () => {
+                await Intune.openIntuneConsole();
             });
 
         }
