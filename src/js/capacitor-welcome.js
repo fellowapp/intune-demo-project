@@ -95,7 +95,7 @@ window.customElements.define(
             });
 
             self.shadowRoot.querySelector('#intune').addEventListener("click", async () => {
-                await Intune.loginAndEnrollAccount({ email: "jake@365.fellow.co" });
+                await Intune.loginAndEnrollAccount({ email: "PUT_EMAIL_HERE" });
             });
 
             self.shadowRoot.querySelector('#debug').addEventListener("click", async () => {

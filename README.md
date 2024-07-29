@@ -15,6 +15,7 @@ the capacitor.config.json file in the appId field.
 `ios/App/App.xcodeproj` two occurrences of setting `PRODUCT_BUNDLE_IDENTIFIER` to your bundle id
 
 Then you'll need to set the client ID in the BASE_CONFIG variable in `src/js/capacitor-welcome.js` to your client id.
+Also replace PUT_EMAIL_HERE with the 365 email you'd like to sign in with.
 As well as in `ios/App/App/Config/Config.xcconfig` in the `MICROSOFT_CLIENT_ID` key.
 
 Also in the Authentication section of the Microsoft Admin centre, you'll need to create a redirect URI
