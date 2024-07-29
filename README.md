@@ -45,3 +45,7 @@ https://learn.microsoft.com/en-us/entra/msal/objc/acquire-tokens
 For Intune you'll need to follow these pages to get started:
 https://learn.microsoft.com/en-us/mem/intune/developer/app-sdk-ios-phase2
 Follow phase 2, 3, 4, and 6.
+
+If you need to re-run the configurator.
+`chmod u+x ./node_modules/@fellow/intune/ios/IntuneMAMConfigurator`
+`./node_modules/@fellow/intune/ios/IntuneMAMConfigurator -i ios/App/App/Info.plist -e ios/App/App/App.entitlements`
