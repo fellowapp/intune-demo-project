@@ -36,7 +36,7 @@
 	<dict>
 		<key>ADALClientId</key>
 		<string>$(MICROSOFT_CLIENT_ID)</string>
-		<key>ADALRedirectScheme</key>
+		<key>ADALRedirectUri</key>
 		<string>msauth.$(PRODUCT_BUNDLE_IDENTIFIER)://auth</string>
 		<key>MAMTelemetryDisabled</key>
 		<string>YES</string>
